@@ -3,26 +3,39 @@ import { GridColDef } from "@mui/x-data-grid";
 import { useGetPostsByPageQuery } from "../services/api";
 import { DataTable } from "components/Table";
 import { useSearchParams } from "react-router-dom";
+import { Box } from "@mui/material";
+import { AddPostModal } from "components/Modals/AddPostModal";
+import { EditPostModal } from "components/Modals/EditPostModal";
 
-const columns: GridColDef[] = [
+const columns: GridColDef[] = (refetchPage) => [
   { field: "id", headerName: "Id", width: 70 },
-  { field: "title", headerName: "Title", width: 780 },
+  { field: "title", headerName: "Title", width: 680 },
+  {
+    field: "",
+    renderCell: ({ row }) => (
+      <EditPostModal editPostData={row} refetchPage={refetchPage} />
+    ),
+    width: 100,
+  },
 ];
 
 export const PostsPage = () => {
   const [searchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";
-  const { data, error, isLoading } = useGetPostsByPageQuery(page);
+  const { data, error, isLoading, refetch } = useGetPostsByPageQuery(page);
   return (
-    <div>
-      {error && error}
-      <DataTable
-        title="Posts"
-        rows={data?.posts}
-        columns={columns}
-        isLoading={isLoading}
-        pageCount={data?.pageCount}
-      />
-    </div>
+    <Box sx={{ position: "relative" }}>
+      <>
+        <AddPostModal />
+        {error && error}
+        <DataTable
+          title="Posts"
+          rows={data?.posts}
+          columns={columns(refetch)}
+          isLoading={isLoading}
+          pageCount={data?.pageCount || 1}
+        />
+      </>
+    </Box>
   );
 };

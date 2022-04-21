@@ -1,5 +1,5 @@
 import React from "react";
-import { GridColDef, GridRowId } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 import { useGetUsersByPageQuery } from "../services/api";
 import { DataTable } from "components/Table";
 import { useSearchParams } from "react-router-dom";
@@ -25,7 +25,7 @@ export const UsersPage = () => {
         rows={data?.users}
         columns={columns}
         isLoading={isLoading}
-        pageCount={data?.pageCount}
+        pageCount={data?.pageCount || 1}
         onRowClick
       />
     </div>

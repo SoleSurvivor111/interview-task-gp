@@ -4,10 +4,11 @@ import { DataGrid, GridColumns, GridRowParams } from "@mui/x-data-grid";
 import { Box, Pagination } from "@mui/material";
 import { LinearProgress } from "@mui/material";
 import { Typography } from "@mui/material";
+import { Post } from "types";
 
 type DataTableProps = {
   title: string;
-  rows: Array<Object>;
+  rows: Array<Post>;
   columns: GridColumns<Object>;
   isLoading: boolean;
   pageCont: number;

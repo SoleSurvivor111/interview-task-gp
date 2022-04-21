@@ -62,7 +62,6 @@ export function VerticalTabs() {
         <Tab label="Users" to="/users" component={Link} />
         <Tab label="Posts" to="/posts" component={Link} />
       </Tabs>
-      <div>test</div>
     </Box>
   );
 }

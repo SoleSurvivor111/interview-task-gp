@@ -18,20 +18,22 @@ export const UserPage = () => {
     <Box>
       <BaseCard isLoading={isLoading} maxWidth="700px">
         <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Avatar
-            sx={{
-              width: "100px",
-              height: "100px",
-              backgroundColor: generateRandomColor(),
-              mr: "30px",
-            }}
-          >
-            {initials}
-          </Avatar>
-          <Box>
-            <Typography variant="h6">{`${data?.name} <${data?.email}>`}</Typography>
-            <Typography variant="body1">{`Gender: ${data?.gender}`}</Typography>
-            <Typography variant="body1">{`Status: ${data?.status}`}</Typography>
+          <Box sx={{ display: "flex" }}>
+            <Avatar
+              sx={{
+                width: "100px",
+                height: "100px",
+                backgroundColor: generateRandomColor(),
+                mr: "30px",
+              }}
+            >
+              {initials}
+            </Avatar>
+            <Box>
+              <Typography variant="h6">{`${data?.name} <${data?.email}>`}</Typography>
+              <Typography variant="body1">{`Gender: ${data?.gender}`}</Typography>
+              <Typography variant="body1">{`Status: ${data?.status}`}</Typography>
+            </Box>
           </Box>
           <Posts />
         </Box>

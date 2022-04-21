@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
+import { SnackbarProvider } from "notistack";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,7 +15,12 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <SnackbarProvider
+          maxSnack={3}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        >
+          <App />
+        </SnackbarProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

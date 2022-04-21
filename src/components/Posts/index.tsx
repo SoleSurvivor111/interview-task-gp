@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Avatar, Divider, Paper, Box } from "@mui/material";
+import { Grid, Typography, Divider, Paper, Box } from "@mui/material";
 import { BaseCard } from "components/Card";
 import { useGetPostsByUserIdQuery } from "services/api";
 import { useParams } from "react-router-dom";

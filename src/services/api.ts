@@ -1,7 +1,7 @@
 // Need to use the React-specific entry point to allow generating React hooks
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from 'redux/store'
-import type { Post, User, Comment } from 'types'
+import type { Post, User, Comment, BasePost } from 'types'
 
 export const api = createApi({
   reducerPath: 'api',
@@ -25,7 +25,7 @@ export const api = createApi({
     getUserById: builder.query<User, string>({
       query: (id) => `users/${id}`,
     }),
-    getPostsByPage: builder.query<{posts: Post[], pagesCount: string}, string>({
+    getPostsByPage: builder.query<{posts: Post[], pageCount: string}, string>({
       query: (page) => `posts?page=${page}`,
       transformResponse: (response: unknown, meta: any ) => {
         const pageCount = meta.response.headers.get('X-Pagination-Pages');
@@ -36,6 +36,20 @@ export const api = createApi({
     getPostById: builder.query<Post, string>({
       query: (id) => `posts/${id}`,
     }),
+    addPost: builder.mutation<BasePost>({
+      query: (post) => ({
+        url: `posts`,
+        method: 'POST',
+        body: post,
+      }),
+    }),
+    editPost: builder.mutation<BasePost>({
+      query: ({id, ...post}) => ({
+        url: `posts/${id}`,
+        method: 'PATCH',
+        body: post,
+      }),
+    }),
     getPostsByUserId: builder.query<Post[], string>({
       query: (userId) => `posts?user_id=${userId}`,
     }),
@@ -45,4 +59,13 @@ export const api = createApi({
   }),
 })
 
-export const { useGetPostByIdQuery, useGetPostsByPageQuery, useGetUsersByPageQuery, useGetUserByIdQuery, useGetCommentsByPostIdQuery, useGetPostsByUserIdQuery } = api;
+export const {
+  useGetPostByIdQuery,
+  useGetPostsByPageQuery,
+  useGetUsersByPageQuery,
+  useGetUserByIdQuery,
+  useGetCommentsByPostIdQuery,
+  useGetPostsByUserIdQuery,
+  useAddPostMutation,
+  useEditPostMutation,
+} = api;

@@ -6,11 +6,13 @@ export type User = {
   status: string,
 }
 
-export type Post = {
-  id: number,
+export type BasePost = {
   user_id: number,
   title: string,
   body: string,
+}
+export type Post  = BasePost & {
+  id: number,
 }
 
 export type Comment = {
