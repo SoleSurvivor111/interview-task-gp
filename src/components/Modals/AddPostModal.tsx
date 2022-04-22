@@ -29,7 +29,11 @@ const style = {
 
 const required = (value: string) => (value ? undefined : "Required");
 
-export function AddPostModal() {
+type AddModalProps = {
+  refetchPage: () => void;
+};
+
+export function AddPostModal({ refetchPage }: AddModalProps) {
   const [addPost, { isLoading }] = useAddPostMutation();
   const [isOpen, setOpen] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -40,6 +44,7 @@ export function AddPostModal() {
       enqueueSnackbar(`Post with ${post.id} was created.`, {
         variant: "success",
       });
+      await refetchPage();
       setOpen(false);
     } catch ({ error, originalStatus }: any) {
       enqueueSnackbar(`${error} ${originalStatus}.`, {

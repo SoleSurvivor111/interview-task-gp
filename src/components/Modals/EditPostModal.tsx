@@ -29,7 +29,15 @@ const style = {
 
 const required = (value: string) => (value ? undefined : "Required");
 
-export function EditPostModal({ editPostData, refetchPage }) {
+type EditPostModalProps = {
+  refetchPage: () => void;
+  editPostData: Object;
+};
+
+export function EditPostModal({
+  editPostData,
+  refetchPage,
+}: EditPostModalProps) {
   const [editPost, { isLoading }] = useEditPostMutation();
   const [isOpen, setOpen] = useState(false);
   const { enqueueSnackbar } = useSnackbar();

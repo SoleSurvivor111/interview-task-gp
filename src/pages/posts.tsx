@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 import { AddPostModal } from "components/Modals/AddPostModal";
 import { EditPostModal } from "components/Modals/EditPostModal";
 
-const columns: GridColDef[] = (refetchPage) => [
+const columns = (refetchPage: () => void): GridColDef[] => [
   { field: "id", headerName: "Id", width: 70 },
   { field: "title", headerName: "Title", width: 680 },
   {
@@ -26,7 +26,7 @@ export const PostsPage = () => {
   return (
     <Box sx={{ position: "relative" }}>
       <>
-        <AddPostModal />
+        <AddPostModal refetchPage={refetch} />
         {error && error}
         <DataTable
           title="Posts"
