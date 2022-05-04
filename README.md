@@ -1,3 +1,8 @@
+## Learn More
+
+[prewiew](https://solesurvivor111.github.io/interview-task-gp/).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
