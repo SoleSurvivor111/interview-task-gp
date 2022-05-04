@@ -6,6 +6,7 @@ import { useGetUserByIdQuery } from "services/api";
 import { useParams } from "react-router-dom";
 import { generateRandomColor, getInitials } from "tools";
 import { Posts } from "components/Posts";
+import { BackBtn } from "components/BackButton";
 
 export const UserPage = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ export const UserPage = () => {
 
   return (
     <Box>
+      <BackBtn sx={{ position: "absolute", top: 50, left: 50 }} />
       <BaseCard isLoading={isLoading} maxWidth="700px">
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Box sx={{ display: "flex" }}>

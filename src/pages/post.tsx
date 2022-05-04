@@ -4,6 +4,7 @@ import { BaseCard } from "components/Card";
 import { useGetPostByIdQuery } from "services/api";
 import { useParams } from "react-router-dom";
 import { Comments } from "components/Comments";
+import { BackBtn } from "components/BackButton";
 
 export const PostPage = () => {
   const { id } = useParams();
@@ -11,6 +12,7 @@ export const PostPage = () => {
 
   return (
     <Box>
+      <BackBtn sx={{ position: "absolute", top: 50, left: 50 }} />
       <BaseCard isLoading={isLoading} error={error} maxWidth="700px">
         <Box>
           <Typography variant="h4" sx={{ mb: "10px" }}>
