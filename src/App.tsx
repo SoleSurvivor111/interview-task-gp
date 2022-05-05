@@ -23,7 +23,7 @@ function App() {
           <Route path="users/:id" element={<UserPage />} />
           <Route path="posts" element={<PostsPage />} />
           <Route path="posts/:id" element={<PostPage />} />
-          <Route path="" element={<Navigate to="/users" />} />
+          <Route path="/" element={<Navigate to="/users" />} />
           <Route path="*" element="404" />
         </Routes>
       </div>
