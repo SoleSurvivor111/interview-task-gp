@@ -1,6 +1,6 @@
-## Learn More
+## Preview
 
-[prewiew](https://solesurvivor111.github.io/interview-task-gp/).
+[link](https://solesurvivor111.github.io/interview-task-gp/).
 
 
 # Getting Started with Create React App
